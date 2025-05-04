@@ -41,7 +41,7 @@ while True:
     elif quesion == '2':
         cursor.execute(
             """
-            SELECT * FROM students
+            SELECT * FROM courses
             """
         )
         courses = cursor.fetchall()
@@ -51,14 +51,16 @@ while True:
 
     elif quesion == '3':
         name = input("введіть імя  студента: ")
-        age = input("введіть вік студента: ")
+        age = int(input("введіть вік студента: "))
+
         major = input("введіть спеціальність студента: ")
+        school = input("введіть заклад студента: ")
 
         cursor.execute(
             '''
-            INSERT INTO students(name, age, major)
-            VALUES(?, ?, ?)
-                ''', (name, int(age), major)
+            INSERT INTO students(name, age, major, school)
+            VALUES(?, ?, ?, ?)
+                ''', (name, int(age), major, school)
                 )
         print("успішно додано нового студента")
         con.commit()
