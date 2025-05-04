@@ -1,7 +1,7 @@
 import sqlite3
 
 con = sqlite3.connect("uni.db")
-cursor =  con.cursor()
+cursor = con.cursor()
 
 
 
@@ -9,9 +9,6 @@ cursor.execute(
 
     """
     SELECT * FROM students
-
-
-
     """
 
 )
@@ -23,8 +20,10 @@ print(students)
 while True:
     print("0.вихів з програми")
     print("1.список студентів")
+    print("2.список курсів")
+    print("3.додати студента")
 
-    quesion = input("db,: ")
+    quesion = input("виберіть дію: ")
 
 
     if quesion == "0":
@@ -32,7 +31,7 @@ while True:
     elif quesion == '1':
         cursor.execute(
             """
-            SELECT FROM students
+            SELECT * FROM students
             """
         )
         students = cursor.fetchall()
@@ -42,7 +41,7 @@ while True:
     elif quesion == '2':
         cursor.execute(
             """
-            SELECT FROM students
+            SELECT * FROM students
             """
         )
         courses = cursor.fetchall()
@@ -51,18 +50,18 @@ while True:
             print(course)
 
     elif quesion == '3':
-        name = input("імя ")
-        age = input("вік")
-        major = input("спц")
+        name = input("введіть імя  студента: ")
+        age = input("введіть вік студента: ")
+        major = input("введіть спеціальність студента: ")
 
         cursor.execute(
             '''
-                INSERT INTO students(name, age, major)
-                VALUES(?, ?, ?),
-                    ''', (name, age, major)
+            INSERT INTO students(name, age, major)
+            VALUES(?, ?, ?)
+                ''', (name, int(age), major)
                 )
-        print("")
-        con.commit
+        print("успішно додано нового студента")
+        con.commit()
 
 
 con.commit()
