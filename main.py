@@ -44,10 +44,11 @@ while True:
             SELECT FROM students
             """
         )
-        students = cursor.fetchall()
+        courses = cursor.fetchall()
         for course in courses:
 
             print(course)
+
     elif quesion == '3':
         name = input("імя ")
         age = input("вік")
