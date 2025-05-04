@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.connect("uni.db")
+con = sqlite3.connect("sql_1/uni.db")
 cursor = con.cursor()
 
 
