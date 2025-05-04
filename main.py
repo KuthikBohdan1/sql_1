@@ -11,6 +11,7 @@ cursor.execute(
     SELECT * FROM students
 
 
+
     """
 
 )
